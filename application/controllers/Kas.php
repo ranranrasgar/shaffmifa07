@@ -18,9 +18,9 @@ class Kas extends CI_Controller
 		// Mendapatkan tanggal mulai dan tanggal selesai dari input pengguna
 		$tanggal_mulai = $this->input->get('tanggal_mulai');
 		$tanggal_selesai = $this->input->get('tanggal_selesai');
-		$idAgt = $this->input->get('idtf');
+		$idtf = $this->input->get('idtf');
 		// Memuat model dan memanggil fungsi untuk mendapatkan daftar kas dengan filter tanggal
-		$data['list'] = $this->Kas_model->getKasList($tanggal_mulai, $tanggal_selesai, $idAgt);
+		$data['list'] = $this->Kas_model->getKasList($tanggal_mulai, $tanggal_selesai, $idtf);
 		// Memuat total data kas (jika diperlukan)
 		$data['total'] = $this->Kas_model->getCount();
 		// Lain-lain seperti title dan view tetap sama

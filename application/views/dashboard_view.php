@@ -16,18 +16,19 @@
                 <p>Jumlah anggota terdaftar</p>
             </div>
         </div>
-        <?php // if ($this->session->userdata('role') == 'superadmin') : ?>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-user"></i></div>
-                    <div class="count">
-                        <?php echo $ptgCount ?>
-                    </div>
-                    <h3>Petugas</h3>
-                    <p>Jumlah petugas terdaftar</p>
+        <?php // if ($this->session->userdata('role') == 'superadmin') : 
+        ?>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-user"></i></div>
+                <div class="count">
+                    <?php echo $ptgCount ?>
                 </div>
+                <h3>Petugas</h3>
+                <p>Jumlah petugas terdaftar</p>
             </div>
-            <!-- <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        </div>
+        <!-- <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-list-alt"></i></div>
                 <div class="count">
@@ -37,18 +38,21 @@
                 <p>Total jumlah donasi</p>
             </div>
         </div> -->
-        <!-- <?php // else : ?>
+        <!-- <?php // else : 
+                ?>
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <div class="tile-stats">
                     <div class="icon"><i class="fa fa-arrow-up"></i></div>
                     <div class="count">
-                        <?php // echo $pnjCount ?>
+                        <?php // echo $pnjCount 
+                        ?>
                     </div>
                     <h3>Keuangan</h3>
                     <p>Total jumlah transaksi</p>
                 </div>
             </div>
-        <?php // endif; ?> -->
+        <?php // endif; 
+        ?> -->
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-6">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-users"></i></div>
@@ -90,15 +94,18 @@
                 <div class="x_content">
                     <label>Nama </label>
                     <p>&emsp;&nbsp;
-                        <?php // echo $this->db->get('perpus')->row('NAMA_P') ?>
+                        <?php // echo $this->db->get('perpus')->row('NAMA_P') 
+                        ?>
                     </p>
                     <label>Alamat</label>
                     <p>&emsp;&nbsp;
-                        <?php //echo $this->db->get('perpus')->row('ALAMAT_P') ?>
+                        <?php //echo $this->db->get('perpus')->row('ALAMAT_P') 
+                        ?>
                     </p>
                     <label>Tentang</label>
                     <p>&emsp;&nbsp;
-                        <?php //echo $this->db->get('perpus')->row('ABOUT') ?>
+                        <?php //echo $this->db->get('perpus')->row('ABOUT') 
+                        ?>
                     </p>
                 </div>
             </div>
@@ -125,17 +132,17 @@
                             // } else {
                             //     $rst1 = number_format($query1[0]->rp_masuk, 0, ',', '.');
                             // }
-                            
+
                             // $rst2 = number_format($query2[0]->rp_keluar, 0, ',', '.'); // Format mata uang untuk rp_keluar
 
                             $jmlKasMasukFormat = number_format($jmlKasMasuk, 0, ',', '.'); // Format mata uang untuk min
                             $jmlKasKeluarFormat = number_format($jmlKasKeluar, 0, ',', '.'); // Format mata uang untuk min
-                            
-                            
+
+
                             $min = $jmlKasMasuk - $jmlKasKeluar;
                             $minFormatted = number_format($min, 0, ',', '.'); // Format mata uang untuk min
-                            
-                          //  $jmlKasMasuk = $KasMasukList[0]->d ?? 0;
+
+                            //  $jmlKasMasuk = $KasMasukList[0]->d ?? 0;
 
                             ?>
                             <div style="padding-top: 23px; padding-left: 20px">
@@ -159,7 +166,7 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2><i class="fa fa-users"></i>  Anggota <small>terbaru</small></h2>
+                    <h2><i class="fa fa-users"></i> Anggota <small>terbaru</small></h2>
                     <h2 class="pull-right"><small><a href="<?php echo base_url() ?>anggota">Lihat Selengkapnya >></a></small></h2>
                     <div class="clearfix"></div>
                 </div>
@@ -176,17 +183,17 @@
                         <tbody>
                             <?php $agtNo = $agtCount;
                             foreach ($agtList as $agt) : ?>
-                            <?php if ($agt->GENDER == 'L') {
+                                <?php if ($agt->GENDER == 'L') {
                                     $g = 'Laki-laki';
                                 } else {
                                     $g = 'Perempuan';
                                 } ?>
-                            <tr>
-                                <th scope="row"><?php echo $agtNo; ?></th>
-                                <td><?php echo $agt->ID_ANGGOTA ?></td>
-                                <td><?php echo $agt->FULL_NAME ?></td>
-                                <td><?php echo $g ?></td>
-                            </tr>
+                                <tr>
+                                    <th scope="row"><?php echo $agtNo; ?></th>
+                                    <td><?php echo $agt->ID_ANGGOTA ?></td>
+                                    <td><?php echo $agt->FULL_NAME ?></td>
+                                    <td><?php echo $g ?></td>
+                                </tr>
                             <?php $agtNo--;
                             endforeach; ?>
                         </tbody>
@@ -198,7 +205,7 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2><i class="fa fa-book"></i>  Kas <small>Masuk</small></h2>
+                    <h2><i class="fa fa-book"></i> Kas <small>Masuk</small></h2>
                     <h2 class="pull-right"><small><a href="<?php echo base_url() ?>kas">Lihat Selengkapnya >></a></small></h2>
                     <div class="clearfix"></div>
                 </div>
@@ -207,23 +214,21 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>No.Reff</th>
                                 <th>Tanggal</th>
-                                <th>Nama Anggota</th>
+                                <th>Nama</th>
                                 <th>Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $bkNo = $kasCount;
                             foreach ($kasList as $bk) : ?>
-                            <tr>
-                                <th scope="row"><?php echo $bkNo; ?></th>
-                                <td><?php echo $bk->ID_KAS ?></td>
-                                <td><?php echo $bk->TGL_KAS ?></td>
-                                <td><?php echo $bk->FULL_NAME ?></td>
-                                <td><?php echo number_format($bk->RP_MASUK, 0, ',', '.') ?></td>
+                                <tr>
+                                    <th scope="row"><?php echo $bkNo; ?></th>
+                                    <td><?php echo $bk->TGL_KAS ?></td>
+                                    <td><?php echo $bk->FULL_NAME ?></td>
+                                    <td><?php echo number_format($bk->RP_MASUK, 0, ',', '.') ?></td>
 
-                            </tr>
+                                </tr>
                             <?php $bkNo--;
                             endforeach; ?>
                         </tbody>

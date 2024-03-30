@@ -12,14 +12,12 @@
     } ?>
 
     <div class="clearfix"></div>
-    <div class="row">
-        <!-- Dropdown filter -->
+    <!-- <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label for="filterPekerjaan">Filter Pekerjaan:</label>
                 <select class="form-control" id="filterPekerjaan">
                     <option value="">Semua Pekerjaan</option>
-                    <!-- Tambahkan opsi pekerjaan dari data pekerjaan yang tersedia -->
                     <?php foreach ($daftarPekerjaan as $pekerjaan) : ?>
                         <option value="<?php echo $pekerjaan->PEKERJAAN ?>">
                             <?php echo $pekerjaan->PEKERJAAN ?></option>
@@ -30,7 +28,6 @@
                 <label for="filterPekerjaan">Filter Pekerjaan:</label>
                 <select class="form-control" id="filterPekerjaan">
                     <option value="">Semua Pekerjaan</option>
-                    <!-- Tambahkan opsi pekerjaan dari data pekerjaan yang tersedia -->
                     <?php foreach ($daftarPekerjaan as $pekerjaan) : ?>
                         <option value="<?php echo $pekerjaan->PEKERJAAN ?>">
                             <?php echo $pekerjaan->PEKERJAAN ?></option>
@@ -41,7 +38,6 @@
                 <label for="filterPekerjaan">Filter Pekerjaan:</label>
                 <select class="form-control" id="filterPekerjaan">
                     <option value="">Semua Pekerjaan</option>
-                    <!-- Tambahkan opsi pekerjaan dari data pekerjaan yang tersedia -->
                     <?php foreach ($daftarPekerjaan as $pekerjaan) : ?>
                         <option value="<?php echo $pekerjaan->PEKERJAAN ?>">
                             <?php echo $pekerjaan->PEKERJAAN ?></option>
@@ -49,7 +45,7 @@
                 </select>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">

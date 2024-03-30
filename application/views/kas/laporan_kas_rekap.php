@@ -1,7 +1,7 @@
 <div class="">
     <div class="page-title" style="padding: 8px">
         <div class="title_left">
-            <h1 style="font-size: 24px;"><i class="fa fa-users"></i> Buku Kas</h1>
+            <h1 style="font-size: 24px;"><i class="fa fa-users"></i> Rekap Kas</h1>
         </div>
     </div>
     <?php if ($this->session->userdata('role') == 'superadmin') {
@@ -41,8 +41,8 @@
                                     <th>Nama Anggota</th>
                                     <th>Kas Masuk</th>
                                     <th>Kas Keluar</th>
-                                    <th>Saldo</th>
                                     <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,18 +67,15 @@
                                     foreach ($list as $listKas) { ?>
                                         <tr>
                                             <td><?php echo $no ?></td>
-                                            <td><?php echo $listKas->FULL_NAME ?></td>
+
+                                            <td><a href="<?php echo base_url() ?>kas?idtf=<?php echo $listKas->ID_ANGGOTA ?>"><?php echo $listKas->FULL_NAME ?></a>
+                                            </td>
                                             <td style="text-align: right;">
                                                 <?php echo number_format($listKas->RP_MASUK, 0, ',', '.') ?></td>
                                             <td style="text-align: right;">
                                                 <?php echo number_format($listKas->RP_KELUAR, 0, ',', '.') ?></td>
-                                            <td style="text-align: right;">
-                                                <?php echo number_format($listKas->Saldo, 0, ',', '.') ?></td>
-
-
                                             <td>
-                                                <a href="<?php echo base_url() ?>kas?idtf=<?php echo $listKas->ID_ANGGOTA ?>" class="btn btn-info btn-xs">
-                                                    <i class="fa fa-list"> </i>
+                                                <a href="<?php echo base_url() ?>kas?idtf=<?php echo $listKas->ID_ANGGOTA ?>" class="btn btn-info btn-xs"> <i class="fa fa-list"> </i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -104,8 +101,7 @@
                                         <td style="text-align: right;"><?php echo number_format($jmlKeluar, 0, ',', '.') ?>
                                         </td>
                                         <td style="text-align: right;">
-                                            <?php echo number_format($jmlMasuk - $jmlKeluar, 0, ',', '.') ?></td>
-                                        <td colspan="3"></td>
+                                            <?php echo 'Saldo Kas Rp. ' . number_format($jmlMasuk - $jmlKeluar, 0, ',', '.') ?></td>
                                     </tr>
                                 </tfoot>
                             <?php } ?>
@@ -168,7 +164,7 @@
         localStorage.setItem('defaultEndDate', tanggalSelesai);
 
         // Mengubah URL dengan menambahkan parameter tanggal mulai dan tanggal selesai
-        var url = '<?php echo base_url("kas/viewKasRekap"); ?>';
+        var url = '<?php echo base_url("kas/index"); ?>';
         // Periksa apakah ada parameter query string di URL
         if (url.indexOf('?') !== -1) {
             url += '&tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;

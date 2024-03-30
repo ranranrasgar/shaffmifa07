@@ -83,7 +83,7 @@ class Kas_model extends CI_Model
         return $query = $this->db->order_by('id_kas', 'ASC')->get('kas')->result();
     }
 
-    public function getKasList($tanggal_mulai = '', $tanggal_selesai = '', $idAgt = '')
+    public function getKasList($tanggal_mulai = '', $tanggal_selesai = '', $idtf = '')
     {
         // First, execute the statement to set @saldo
         $this->db->query("SET @saldo = 0;");
@@ -101,8 +101,8 @@ class Kas_model extends CI_Model
             $this->db->where('k.TGL_KAS >=', $tanggal_mulai);
             $this->db->where('k.TGL_KAS <=', $tanggal_selesai);
         }
-        if (!empty($idAgt)) {
-            $this->db->where('a.ID_ANGGOTA >=', $idAgt);
+        if (!empty($idtf)) {
+            $this->db->where('a.ID_ANGGOTA =', $idtf);
         }
 
         // Menyusun data berdasarkan ID_KAS secara menaik

@@ -53,107 +53,75 @@
                             </thead>
                             <tbody>
                                 <?php
-
                                 $jmlMasuk = 0;
                                 $jmlKeluar = 0;
                                 $no = 1;
 
                                 if ($total == 0) {
                                     echo '
-                                        <tr>
-                                            <td colspan="12">
-                                            <div class="alert alert-warning" role="alert">
-                                            Tidak ada data ' . $title . ', <a href="' . base_url() . 'kas/addKasmasuk' . '" class="alert-link">Entry Kas Masuk</a>.
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        ';
+            <tr>
+                <td colspan="12">
+                    <div class="alert alert-warning" role="alert">
+                        Tidak ada data ' . $title . ', <a href="' . base_url() . 'kas/addKasmasuk' . '" class="alert-link">Entry Kas Masuk</a>.
+                    </div>
+                </td>
+            </tr>
+        ';
                                 } else {
-
-                                    foreach ($list as $listKas) { ?>
-                                <tr>
-                                    <td><?php echo $no ?></td>
-                                    <td><?php echo date('d/m/Y', strtotime($listKas->TGL_KAS)); ?></td>
-                                    <td><a
-                                            href="<?php echo base_url() ?>kas/detail?idtf=<?php echo $listKas->ID_KAS ?>"><?php echo $listKas->ID_KAS ?></a>
-                                    </td>
-                                    <td><?php echo $listKas->FULL_NAME ?></td>
-                                    <td style="text-align: right;">
-                                        <?php echo number_format($listKas->RP_MASUK, 0, ',', '.') ?></td>
-                                    <td style="text-align: right;">
-                                        <?php echo number_format($listKas->RP_KELUAR, 0, ',', '.') ?></td>
-                                    <td style="text-align: right;">
-                                        <?php echo number_format($listKas->Saldo, 0, ',', '.') ?></td>
-                                    <td><?php echo $listKas->KETERANGAN ?></td>
-
-                                    <?php if ($this->session->userdata('role') == 'superadmin') : ?>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                                data-toggle="dropdown">
-                                                <i class="fa fa-gear"></i><span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a
-                                                        href="<?php echo base_url() ?>kas/detail?idtf=<?php echo $listKas->ID_KAS ?>">Detail</a>
-                                                </li>
-                                                <li><a
-                                                        href="<?php echo base_url() ?>kas/edit?idtf=<?php echo $listKas->ID_KAS ?>">Edit</a>
-                                                </li>
-                                                <li><a onclick="sweets('<?php echo $listKas->ID_KAS ?>')">Delete</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- <a href="<?php //echo //base_url() 
-                                                                    ?>kas/detail?idtf=<?php //echo $listKas->ID_KAS 
-                                                                                                                ?>" class="btn btn-info btn-xs">
-                                                        <i class="fa fa-list"> </i>
+                                    foreach ($list as $listKas) {
+                                ?>
+                                        <tr>
+                                            <td><?php echo $no ?></td>
+                                            <td><?php echo date('d/m/Y', strtotime($listKas->TGL_KAS)); ?></td>
+                                            <td><a href="<?php echo base_url() ?>kas/detail?idtf=<?php echo $listKas->ID_KAS ?>"><?php echo $listKas->ID_KAS ?></a></td>
+                                            <td><?php echo $listKas->FULL_NAME ?></td>
+                                            <td style="text-align: right;"><?php echo number_format($listKas->RP_MASUK, 0, ',', '.') ?></td>
+                                            <td style="text-align: right;"><?php echo number_format($listKas->RP_KELUAR, 0, ',', '.') ?></td>
+                                            <td style="text-align: right;"><?php echo number_format($listKas->Saldo, 0, ',', '.') ?></td>
+                                            <td><?php echo $listKas->KETERANGAN ?></td>
+                                            <?php if ($this->session->userdata('role') == 'superadmin') : ?>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                                            <i class="fa fa-gear"></i><span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="<?php echo base_url() ?>kas/detail?idtf=<?php echo $listKas->ID_KAS ?>">Detail</a></li>
+                                                            <li><a href="<?php echo base_url() ?>kas/edit?idtf=<?php echo $listKas->ID_KAS ?>">Edit</a></li>
+                                                            <li><a onclick="sweets('<?php echo $listKas->ID_KAS ?>')">Delete</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            <?php else : ?>
+                                                <td>
+                                                    <a href="<?php echo base_url() ?>kas/detail?idtf=<?php echo $listKas->ID_KAS ?>" class="btn btn-info btn-xs">
+                                                        <i class="fa fa-list"></i>
                                                     </a>
-                                                    <a href="<?php //echo //base_url() 
-                                                                ?>kas/edit?idtf=<?php // echo $listKas->ID_KAS 
-                                                                                                        ?>" class="btn btn-success btn-xs">
-                                                        <i class="fa fa-edit"> </i>
-                                                    </a>
-                                                    <a onclick="sweets('<?php //echo $listKas->ID_KAS 
-                                                                        ?>')" class="btn btn-danger btn-xs">
-                                                        <i class="fa fa-trash"> </i>
-                                                    </a> -->
-                                    </td>
-                                    <?php else : ?>
-                                    <td>
-                                        <a href="<?php echo base_url() ?>kas/detail?idtf=<?php echo $listKas->ID_KAS ?>"
-                                            class="btn btn-info btn-xs">
-                                            <i class="fa fa-list"> </i>
-                                        </a>
-                                    </td>
-                                    <?php endif; ?>
-                                </tr>
+                                                </td>
+                                            <?php endif; ?>
+                                        </tr>
                                 <?php
                                         $no++;
-                                        $jmlMasuk = $jmlMasuk + $listKas->RP_MASUK;
-                                        $jmlKeluar = $jmlKeluar + $listKas->RP_KELUAR;
-                                    } ?>
-
-                                <?php
-
+                                        $jmlMasuk += $listKas->RP_MASUK;
+                                        $jmlKeluar += $listKas->RP_KELUAR;
+                                    }
                                 }
                                 ?>
-
                             </tbody>
-                            <?php if ($jmlMasuk > 0) { ?>
-                            <tfoot>
 
-                                <tr>
-                                    <td colspan="4" style="text-align: right;">Jumlah</td>
-                                    <td style="text-align: right;"><?php echo number_format($jmlMasuk, 0, ',', '.') ?>
-                                    </td>
-                                    <td style="text-align: right;"><?php echo number_format($jmlKeluar, 0, ',', '.') ?>
-                                    </td>
-                                    <td style="text-align: right;">
-                                        <?php echo number_format($jmlMasuk - $jmlKeluar, 0, ',', '.') ?></td>
-                                    <td colspan="2"></td>
-                                </tr>
-                            </tfoot>
+                            <?php if ($jmlMasuk > 0) { ?>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4" style="text-align: right;">Jumlah</td>
+                                        <td style="text-align: right;"><?php echo number_format($jmlMasuk, 0, ',', '.') ?>
+                                        </td>
+                                        <td style="text-align: right;"><?php echo number_format($jmlKeluar, 0, ',', '.') ?>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <?php echo number_format($jmlMasuk - $jmlKeluar, 0, ',', '.') ?></td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tfoot>
                             <?php } ?>
                         </table>
                     </div>
@@ -164,69 +132,69 @@
 </div>
 
 <script>
-function sweets(id) {
-    swal({
-            title: "Apakah anda yakin ingin menghapus data ?",
-            text: "Data tidak bisa di kembalikan",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Delete",
-            closeOnConfirm: false
-        },
-        function() {
-            window.location.href = "<?php echo base_url() ?>kas/delete?rcgn=" + id;
-        });
-}
+    function sweets(id) {
+        swal({
+                title: "Apakah anda yakin ingin menghapus data ?",
+                text: "Data tidak bisa di kembalikan",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Delete",
+                closeOnConfirm: false
+            },
+            function() {
+                window.location.href = "<?php echo base_url() ?>kas/delete?rcgn=" + id;
+            });
+    }
 </script>
 
 <script>
-// Fungsi untuk mengatur nilai default pada input tanggal mulai dan tanggal selesai
-function setDefaultDate() {
-    // Mendapatkan nilai dari Local Storage jika tersedia
-    var defaultStartDate = localStorage.getItem('defaultStartDate');
-    var defaultEndDate = localStorage.getItem('defaultEndDate');
+    // Fungsi untuk mengatur nilai default pada input tanggal mulai dan tanggal selesai
+    function setDefaultDate() {
+        // Mendapatkan nilai dari Local Storage jika tersedia
+        var defaultStartDate = localStorage.getItem('defaultStartDate');
+        var defaultEndDate = localStorage.getItem('defaultEndDate');
 
-    // Mendapatkan elemen input tanggal mulai dan tanggal selesai
-    var inputTanggalMulai = document.getElementById('tanggal_mulai');
-    var inputTanggalSelesai = document.getElementById('tanggal_selesai');
+        // Mendapatkan elemen input tanggal mulai dan tanggal selesai
+        var inputTanggalMulai = document.getElementById('tanggal_mulai');
+        var inputTanggalSelesai = document.getElementById('tanggal_selesai');
 
-    // Mengatur nilai default pada input tanggal mulai dan tanggal selesai
-    if (defaultStartDate !== null) {
-        inputTanggalMulai.value = defaultStartDate;
+        // Mengatur nilai default pada input tanggal mulai dan tanggal selesai
+        if (defaultStartDate !== null) {
+            inputTanggalMulai.value = defaultStartDate;
+        }
+        if (defaultEndDate !== null) {
+            inputTanggalSelesai.value = defaultEndDate;
+        }
     }
-    if (defaultEndDate !== null) {
-        inputTanggalSelesai.value = defaultEndDate;
+
+    // Panggil fungsi setDefaultDate saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', setDefaultDate);
+
+    // Fungsi untuk menangani perubahan nilai pada input tanggal
+    function filterByDate() {
+        // Mendapatkan nilai dari input tanggal mulai dan tanggal selesai
+        var tanggalMulai = document.getElementById('tanggal_mulai').value;
+        var tanggalSelesai = document.getElementById('tanggal_selesai').value;
+
+        // Menyimpan nilai terakhir pada Local Storage
+        localStorage.setItem('defaultStartDate', tanggalMulai);
+        localStorage.setItem('defaultEndDate', tanggalSelesai);
+
+        // Mengubah URL dengan menambahkan parameter tanggal mulai dan tanggal selesai
+        var url = '<?php echo base_url("kas/index"); ?>';
+        // Periksa apakah ada parameter query string di URL
+        if (url.indexOf('?') !== -1) {
+            url += '&tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;
+        } else {
+            url += '?tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;
+        }
+        window.location.href = url;
     }
-}
 
-// Panggil fungsi setDefaultDate saat halaman dimuat
-document.addEventListener('DOMContentLoaded', setDefaultDate);
-
-// Fungsi untuk menangani perubahan nilai pada input tanggal
-function filterByDate() {
-    // Mendapatkan nilai dari input tanggal mulai dan tanggal selesai
-    var tanggalMulai = document.getElementById('tanggal_mulai').value;
-    var tanggalSelesai = document.getElementById('tanggal_selesai').value;
-
-    // Menyimpan nilai terakhir pada Local Storage
-    localStorage.setItem('defaultStartDate', tanggalMulai);
-    localStorage.setItem('defaultEndDate', tanggalSelesai);
-
-    // Mengubah URL dengan menambahkan parameter tanggal mulai dan tanggal selesai
-    var url = '<?php echo base_url("kas/index"); ?>';
-    // Periksa apakah ada parameter query string di URL
-    if (url.indexOf('?') !== -1) {
-        url += '&tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;
-    } else {
-        url += '?tanggal_mulai=' + tanggalMulai + '&tanggal_selesai=' + tanggalSelesai;
-    }
-    window.location.href = url;
-}
-
-// Menambahkan event listener untuk memanggil fungsi filterByDate() saat nilai input tanggal berubah
-document.getElementById('tanggal_mulai').addEventListener('change', filterByDate);
-document.getElementById('tanggal_selesai').addEventListener('change', filterByDate);
+    // Menambahkan event listener untuk memanggil fungsi filterByDate() saat nilai input tanggal berubah
+    document.getElementById('tanggal_mulai').addEventListener('change', filterByDate);
+    document.getElementById('tanggal_selesai').addEventListener('change', filterByDate);
 </script>
 
 <!-- <script>
