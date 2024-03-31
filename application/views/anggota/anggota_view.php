@@ -96,28 +96,28 @@
                                             <tr>
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $listAnggota->ID_ANGGOTA ?></td>
-                                                <td><a href="<?php echo base_url() ?>anggota/detail?idtf=<?php echo $listAnggota->ID_ANGGOTA ?>"><?php echo $listAnggota->FULL_NAME ?></a>
+                                                <td>
+                                                    <a href="<?php echo base_url() ?>anggota/detail?idtf=<?php echo $listAnggota->ID_ANGGOTA ?>"><?php echo $listAnggota->FULL_NAME ?></a>
+
+
                                                 </td>
+
                                                 <!-- <td><?php echo $listAnggota->ALAMAT ?></td> -->
                                                 <td><?php echo $listAnggota->TELP ?></td>
                                                 <td><?php echo $listAnggota->PEKERJAAN ?></td>
                                                 <!-- <td><?php echo $listAnggota->BDG_USAHA ?></td> -->
-                                                <td><?php echo $gen ?></td>
+                                                <td>
+                                                    <?php if ($gen == 'L') : ?>
+                                                        <i class="fas fa-male text-primary" title="Laki-laki"></i> Laki-Laki
+                                                    <?php elseif ($gen == 'P') : ?>
+                                                        <i class="fas fa-female text-danger" title="Perempuan"></i> Perempuan
+                                                    <?php else : ?>
+                                                        <?php echo $gen; ?>
+                                                    <?php endif; ?>
+                                                </td>
+
                                                 <?php if ($this->session->userdata('role') == 'superadmin') : ?>
                                                     <td>
-                                                        <!-- <div class="dropdown">
-                                                        <button class="btn btn-secondary dropdown-toggle btn-xs" type="button" id="dropdownMenuButton_<?php echo $listAnggota->ID_ANGGOTA ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Action
-                                                            <span class="caret"></span>
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $listAnggota->ID_ANGGOTA ?>">
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $listAnggota->ID_ANGGOTA ?>"> 
-                                                            <li><a class="dropdown-item" href="<?php echo base_url() ?>anggota/detail?idtf=<?php echo $listAnggota->ID_ANGGOTA ?>">View</a></li>
-                                                            <li><a class="dropdown-item" href="<?php echo base_url() ?>anggota/edit?idtf=<?php echo $listAnggota->ID_ANGGOTA ?>">Edit</a></li>
-                                                            <li><a class="dropdown-item" onclick="sweets('<?php echo $listAnggota->ID_ANGGOTA ?>')">Delete</a></li>
-                                                            </div>
-                                                         </ul> 
-                                                    </div> -->
                                                         <div class="dropdown">
                                                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $listAnggota->ID_ANGGOTA ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 <i class="fa fa-cog"></i> <span class="caret"></span>
@@ -130,8 +130,6 @@
                                                                 <li><a class="dropdown-item" onclick="sweets('<?php echo $listAnggota->ID_ANGGOTA ?>')" href="#">Delete</a></li>
                                                             </ul>
                                                         </div>
-
-
                                                     </td>
                                                 <?php endif; ?>
 
