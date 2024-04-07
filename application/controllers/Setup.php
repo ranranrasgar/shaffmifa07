@@ -1,25 +1,30 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Setup extends CI_Controller {
+class Setup extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('Setup_model');
-		if($this->Setup_model->checkFirst() == false){
+
+		if ($this->Setup_model->checkFirst() == false) {
 			redirect('welcome');
 		}
 	}
 
-	public function index(){
+	public function index()
+	{
 		$this->load->view('setup_view');
 	}
 
-	public function submit(){
-		if($this->Setup_model->insert() == true){
+	public function submit()
+	{
+		if ($this->Setup_model->insert() == true) {
 			$this->session->set_flashdata('announce', 'Silahkan login dengan akun yang sudah terdaftar');
 			redirect('login');
-		}else{
+		} else {
 			//donothing
 		}
 	}

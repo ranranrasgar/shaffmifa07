@@ -1,24 +1,28 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('Dashboard_model');
-		if($this->session->userdata('logged_in') == false){
+
+		if ($this->session->userdata('logged_in') == false) {
 			redirect('login?dst=dashboard');
 		}
 	}
 
-	public function index(){
+	public function index()
+	{
 		$data = array(
 			'title'			=> 'Dashboard',
 			'primary_view'	=> 'dashboard_view',
 			'agtCount'		=> $this->Dashboard_model->getAgtCount(),
 			//'kgnCount'		=> $this->Dashboard_model->getKgnCount(),
 			//'bkCount'		=> $this->Dashboard_model->getBookCount(),
-		    'ptgCount'		=> $this->Dashboard_model->getPtgCount(),
+			'ptgCount'		=> $this->Dashboard_model->getPtgCount(),
 			//'trnCount'		=> $this->Dashboard_model->getTransCount(),
 			//'pnjCount'		=> $this->Dashboard_model->getPinjamCount(),
 			//'kmbCount'		=> $this->Dashboard_model->getKmbCount(),
@@ -29,14 +33,15 @@ class Dashboard extends CI_Controller {
 			'kasCount'  	=> $this->Dashboard_model->getKasCount(),
 			'sumKasList'		=> $this->Dashboard_model->getSaldoKas(),
 			'kasList'		=> $this->Dashboard_model->getKasList()
-			
-		//	'KasKeluarList'		=> $this->Dashboard_model->getTrnList()
+
+			//	'KasKeluarList'		=> $this->Dashboard_model->getTrnList()
 		);
 
 		$this->load->view('template_view', $data);
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		$data = array(
 			'username'	=> '',
 			'logged_in'	=> false,
@@ -47,19 +52,19 @@ class Dashboard extends CI_Controller {
 		redirect('welcome');
 	}
 
-	public function profile(){
+	public function profile()
+	{
 		$uname = $this->input->get('usr');
 		$data = array(
-			'title'			=> $uname.'.s Profile',
+			'title'			=> $uname . '.s Profile',
 			'primary_view'	=> 'profile_view',
 		);
-		if($this->Dashboard_model->checkUser($uname) == true){
+		if ($this->Dashboard_model->checkUser($uname) == true) {
 			$this->load->view('template_view', $data);
-		}else{
+		} else {
 			$this->load->view('full_404_view');
 		}
 	}
-
 }
 
 /* End of file Dashboard.php */

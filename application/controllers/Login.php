@@ -1,35 +1,42 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('Login_model');
-		if($this->Login_model->accountCheck() == true){
+
+		if ($this->Login_model->accountCheck() == true) {
 			redirect('setup');
 		}
-		if($this->session->userdata('logged_in') == true){
+		if ($this->session->userdata('logged_in') == true) {
 			redirect('welcome');
 		}
 	}
 
-	public function index(){
+	public function index()
+	{
 		$this->load->view('login_view');
 	}
 
-	public function dologin(){
-		if($this->input->post('login')){
+	public function dologin()
+	{
+		if ($this->input->post('login')) {
 			$this->form_validation->set_rules('username', 'Username', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 			if ($this->form_validation->run() == true) {
-				if($this->Login_model->userCheck() == true){
+				if ($this->Login_model->userCheck() == true) {
 					$src = $this->input->get('src');
-					if(!empty($src)){
+					if (!empty($src)) {
 						redirect($src);
-					}else{redirect('dashboard');}
-				}else{
+					} else {
+						redirect('dashboard');
+					}
+				} else {
 					$this->session->set_flashdata('announce', 'Invalid username or password');
 					redirect('login');
 				}

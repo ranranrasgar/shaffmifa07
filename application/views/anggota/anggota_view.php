@@ -4,10 +4,14 @@
             <h1 style="font-size: 24px;"><i class="fa fa-users"></i> Anggota</h1>
         </div>
     </div>
+
     <?php if ($this->session->userdata('role') == 'superadmin') {
         echo '<button id="printButton" class="btn btn-primary pull-right"><i class="fa fa-print"></i></button>';
+        //1 echo ' <a href="cetak_anggota.php" target="_blank">Cetak Data Anggota</a>';
     } ?>
+
     <?php if ($this->session->userdata('role') == 'superadmin') {
+
         echo '<a href="' . base_url() . 'anggota/add" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></a>';
     } ?>
 
