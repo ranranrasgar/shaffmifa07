@@ -130,9 +130,7 @@
         }
     </style>
 </head>
-
 <body class="nav-md">
-
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col menu_fixed">
@@ -280,7 +278,6 @@
                 </div>
             </div>
             <!-- top navigation -->
-
             <div class="top_nav">
                 <div class="nav_menu">
                     <nav>
@@ -458,6 +455,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function() {
         $(".prof").click(function() {
